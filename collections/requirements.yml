@@ -1,4 +1,3 @@
 ---
 collections:
-  - name: https://github.com/RedHatSatellite/satellite-ansible-collection
-    type: git
+  - name: theforeman.foreman

@@ -10,3 +10,4 @@
     password: "{{ satellite_password }}"
     organization: "Aperta"
     name: "hello_from_awx"
+    validate_certs: false

@@ -5,8 +5,8 @@
 
 - name: Test Satellite connection
   theforeman.foreman.lifecycle_environment:
-    server_url: {{ satellite_url }}
-    username: {{ satellite_username }}
-    password: {{ satellite_password }}
+    server_url: "{{ satellite_url }}"
+    username: "{{ satellite_username }}"
+    password: "{{ satellite_password }}"
     organization: "Aperta"
     name: "hello_from_awx"

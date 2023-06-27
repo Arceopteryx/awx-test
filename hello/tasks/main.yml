@@ -3,11 +3,23 @@
 - name: Some dummy tasks
   ping:
 
-- name: Test Satellite connection
-  theforeman.foreman.lifecycle_environment:
-    server_url: "{{ satellite_url }}"
-    username: "{{ satellite_username }}"
-    password: "{{ satellite_password }}"
-    organization: "Aperta"
-    name: "hello_from_awx"
+- name: Environment print
+  debug:
+    msg: "{{ ansible_env }}"
+
+- name: Download bootstrap.py from satellite_url
+  get_url:
+    url: "{{ satellite_url }}"
+    dest: /usr/local/sbin/bootstrap.py
     validate_certs: false
+    mode: '0540'
+
+- name: Register with Satellite
+  command: "/usr/local/sbin/bootstrap.py -l {{ satellite_user }} -p {{ satellite_password }} -s {{ satellite_url }} -o {{ satellite_organization }} -L {{ satellite_location }} -g {{ satellite_hostgroup }} -a {{ satellite_activationkey }}"
+
+- name: Register for content from Satellite
+  redhat_subscription:
+    state: present
+    activationkey: {{ satellite_activationkey }}
+    ord_id: {{ satellite_organization }}
+    auto_attach: true

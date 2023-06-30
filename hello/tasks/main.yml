@@ -15,7 +15,7 @@
     mode: '0540'
 
 - name: Register with Satellite
-  command: '/usr/local/sbin/bootstrap.py -l "{{ satellite_user }}" -p "{{ satellite_password }}" -s "{{ satellite_url }}" -o "{{ satellite_organization }}" -L "{{ satellite_location }}" -g "{{ satellite_hostgroup }}" -a "{{ satellite_activationkey }}"'
+  command: "/usr/local/sbin/bootstrap.py -l {{ satellite_user }} -p {{ satellite_password }} -s {{ satellite_url }} -o {{ satellite_organization }} -L {{ satellite_location }} -g {{ satellite_hostgroup }} -a {{ satellite_activationkey }}"
 
 - name: Register for content from Satellite
   redhat_subscription:

@@ -9,7 +9,7 @@
 
 - name: Download bootstrap.py from satellite_url
   get_url:
-    url: "{{ satellite_url }}"
+    url: "{{ satellite_url }}/pub"
     dest: /usr/local/sbin/bootstrap.py
     validate_certs: false
     mode: '0540'
